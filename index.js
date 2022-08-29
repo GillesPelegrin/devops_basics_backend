@@ -1,16 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const createServer = require("./src/create-server.js");
 
+const app = createServer();
 
-const app = express()
-const port = 3000
-
-app.use(bodyParser.json())
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+// app.listen(process.env.PORT, () => console.log(`Start server successfully on port ${process.env.PORT}`))
+ app.listen(3001, () => console.log(`Start server successfully on port ${process.env.PORT}`))
