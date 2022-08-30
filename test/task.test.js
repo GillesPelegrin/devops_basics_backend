@@ -9,6 +9,7 @@ describe('Create Get and Delete Task', () => {
     beforeAll(async () => {
         let server = await createServer();
         app = server.listen(3001, () => console.log(`Start server successfully on port ${process.env.PORT}`))
+        pool.query('DELETE FROM task')
     })
 
     afterAll(() => {
@@ -16,11 +17,44 @@ describe('Create Get and Delete Task', () => {
     })
 
 
-    it('responds with json', (done) => {
-        request(app)
+    it('responds with json', async () => {
+        await request(app)
+            .post('/tasks')
+            .send({title: 'testTitle', message: 'testMessage'})
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200);
+
+        const tasks = await request(app)
             .get('/tasks')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200, done);
+            .expect(200);
+
+        expect(tasks.body.length).toBe(1)
+
+        const actualTask = tasks.body[0]
+        const taskId = actualTask.taskid;
+        delete actualTask.taskid
+        expect(actualTask).toStrictEqual(
+            {
+                message: "testMessage",
+                title: "testTitle",
+            }
+        )
+
+        await request(app)
+            .delete(`/tasks/${taskId}`)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200);
+
+        const deletedTasks = await request(app)
+            .get('/tasks')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200);
+
+        expect(deletedTasks.body.length).toBe(0)
     });
 });
