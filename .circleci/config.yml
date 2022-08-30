@@ -10,16 +10,20 @@ jobs:
 
       - image: cimg/postgres:14.0
         environment:
+          PGHOST: localhost
+          PGUSER: postgres
           POSTGRES_USER: postgres
-        auth:
-          username: postgres
-          password: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
 
     steps:
       - checkout
       - run:
           name: install
           command: npm install
+      - run:
+          name: migrate
+          command: npm run migrate:test
       - run:
           name: E2E
           command: npm test
