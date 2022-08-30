@@ -8,12 +8,12 @@ describe('Create Get and Delete Task', () => {
 
     beforeAll(async () => {
         let server = await createServer();
-        app = server.listen(3001, () => console.log(`Start server successfully on port ${process.env.PORT}`))
-        pool.query('DELETE FROM task')
+        app = await server.listen(3001, )
+        await pool.query('DELETE FROM task')
     })
 
-    afterAll(() => {
-        pool.end().then(() => app.close())
+    afterAll(async () => {
+        await pool.end().then(() => app.close())
     })
 
 
