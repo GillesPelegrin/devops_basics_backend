@@ -3,11 +3,22 @@ jobs:
   build:
     docker:
       - image: cimg/node:18.8.0
+        environment:
+          DB_HOST: postgresql://postgres@localhost/circle_test
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: postgres
+          auth:
+            username: postgres
+            password: postgres
     steps:
       - checkout
       - run:
-            name: install
-            command: npm install
+          name: install
+          command: npm install
       - run:
           name: E2E
           command: npm test
