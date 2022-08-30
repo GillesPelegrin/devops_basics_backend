@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:18.8.0
+      - image: gillespelegrin/base-image
         environment:
           DB_HOST: postgresql://postgres@localhost/circle_test
           DB_USER: postgres
@@ -23,7 +23,7 @@ jobs:
           command: npm install
       - run:
           name: migrate
-          command: npm run migrate:test
+          command: npm run migrate:ci
       - run:
           name: E2E
           command: npm test

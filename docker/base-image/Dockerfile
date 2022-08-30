@@ -1,0 +1,2 @@
+FROM node:18.8.0-alpine3.16
+RUN wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.2.0/flyway-commandline-9.2.0-linux-x64.tar.gz | tar xvz && ln -s `pwd`/flyway-9.2.0/flyway /usr/local/bin
