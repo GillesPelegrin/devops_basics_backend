@@ -11,9 +11,10 @@ jobs:
       - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: postgres
-          auth:
-            username: postgres
-            password: postgres
+        auth:
+          username: postgres
+          password: postgres
+
     steps:
       - checkout
       - run:
