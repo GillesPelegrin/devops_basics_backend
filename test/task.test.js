@@ -18,7 +18,7 @@ describe('Tasks', () => {
 
 
     it('Create Get and Delete Task', async () => {
-        /* await request(app)
+         await request(app)
              .post('/tasks')
              .send({title: 'testTitle', message: 'testMessage'})
              .set('Accept', 'application/json')
@@ -55,6 +55,6 @@ describe('Tasks', () => {
              .expect('Content-Type', /json/)
              .expect(200);
 
-         expect(deletedTasks.body.length).toBe(0) */
+         expect(deletedTasks.body.length).toBe(0)
     });
 });
