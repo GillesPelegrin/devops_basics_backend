@@ -4,17 +4,14 @@ jobs:
     docker:
       - image: gillespelegrin/base-image
         environment:
-          DB_HOST: localhost
+          DB_HOST: postgresql://postgres@localhost/postgres
           DB_USER: postgres
           DB_PASSWORD: postgres
 
-      - image: cimg/postgres:14.0
+      - image: postgres
         environment:
-          PGHOST: localhost
-          PGUSER: postgres
           POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PASSWORD: postgres
 
     steps:
       - checkout
