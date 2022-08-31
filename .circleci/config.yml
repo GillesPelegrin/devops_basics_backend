@@ -31,7 +31,7 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: migrate
-          command: flyway migrate:ci
+          command: npm run migrate:ci
       - run:
           name: E2E
           command: npm test
