@@ -12,7 +12,7 @@ describe('Create Get and Delete Task', () => {
        // await pool.query('DELETE FROM task')
 
         console.log(process.env.DB_HOST)
-        console.log(process.env.DB_DB_USERHOST)
+        console.log(process.env.DB_USER)
         console.log(process.env.DB_PASSWORD)
     })
 
