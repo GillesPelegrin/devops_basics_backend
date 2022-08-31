@@ -11,4 +11,8 @@ const pool = new Pool({
     "idleTimeoutMillis": 0
 })
 
+console.log(process.env.DB_HOST)
+console.log(process.env.DB_DB_USERHOST)
+console.log(process.env.DB_PASSWORD)
+
 module.exports = pool;

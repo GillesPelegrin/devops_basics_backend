@@ -10,6 +10,7 @@ jobs:
 
       - image: postgres
         environment:
+          PGUSER=postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
 
