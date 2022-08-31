@@ -32,6 +32,6 @@ jobs:
       - run:
           name: migrate
           command: flyway -v
-    #  - run:
-    #      name: E2E
-    #      command: npm test
+      - run:
+          name: E2E
+          command: npm test
