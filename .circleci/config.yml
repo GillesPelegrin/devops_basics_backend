@@ -30,11 +30,8 @@ jobs:
           name: Waiting for Postgres to be ready
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-         name: Where am i
-         command: ls
-     # - run:
-     #     name: migrate
-     #     command: npm run migrate:ci
-     # - run:
-     #     name: E2E
-     #     command: npm test
+          name: migrate
+          command: npm run migrate:ci
+    #  - run:
+    #      name: E2E
+    #      command: npm test

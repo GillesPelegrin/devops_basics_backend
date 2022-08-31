@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "migrate:local": "flyway -configFiles=migrate/flyway-local.conf migrate",
-    "migrate:ci": "flyway -configFiles=migrate/flyway-ci.conf migrate",
+    "migrate:local": "flyway -configFiles=./migrate/flyway-local.conf migrate",
+    "migrate:ci": "flyway -configFiles=./migrate/flyway-ci.conf migrate",
     "clean-db": "flyway -configFiles=migrate/flyway-local.conf clean",
     "test": "jest"
   },
