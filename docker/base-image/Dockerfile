@@ -1,5 +1,7 @@
 FROM node:18-alpine3.16
 
+RUN apk add --update npm
+
 ## Installing OpenJDK
 
 # Default to UTF-8 file.encoding
