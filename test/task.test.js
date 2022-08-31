@@ -9,8 +9,7 @@ describe('Tasks', () => {
     beforeAll(async () => {
         let server = await createServer();
         app = await server.listen(3001,)
-        console.log(pool)
-        // await pool.query('DELETE FROM task')
+        await pool.query('DELETE FROM task')
     })
 
     afterAll(async () => {

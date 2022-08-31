@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: gillespelegrin/base-image
         environment:
-          DB_HOST: postgresql://postgres@localhost/postgres
+          DB_HOST: postgresql://postgres@localhost
           DB_USER: postgres
           DB_PASSWORD: postgres
 
