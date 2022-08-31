@@ -3,13 +3,13 @@ const request = require('supertest');
 const pool = require("../src/db-pool");
 
 
-describe('Create Get and Delete Task', () => {
+describe('Tasks', () => {
     let app;
 
     beforeAll(async () => {
         let server = await createServer();
         app = await server.listen(3001,)
-        //await pool.query('DELETE FROM task')
+        await pool.query('DELETE FROM task')
     })
 
     afterAll(async () => {
@@ -17,7 +17,7 @@ describe('Create Get and Delete Task', () => {
     })
 
 
-    it('responds with json', async () => {
+    it('Create Get and Delete Task', async () => {
         /* await request(app)
              .post('/tasks')
              .send({title: 'testTitle', message: 'testMessage'})
