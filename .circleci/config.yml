@@ -10,9 +10,11 @@ jobs:
 
       - image: postgres
         environment:
-          PGUSER=postgres
+          PGHOST: localhost
+          PGUSER: postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
 
     steps:
       - checkout

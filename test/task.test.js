@@ -7,18 +7,22 @@ describe('Create Get and Delete Task', () => {
     let app;
 
     beforeAll(async () => {
-        let server = await createServer();
-        app = await server.listen(3001, )
-        await pool.query('DELETE FROM task')
+      //  let server = await createServer();
+       // app = await server.listen(3001, )
+       // await pool.query('DELETE FROM task')
+
+        console.log(process.env.DB_HOST)
+        console.log(process.env.DB_DB_USERHOST)
+        console.log(process.env.DB_PASSWORD)
     })
 
     afterAll(async () => {
-        await pool.end().then(() => app.close())
+      //  await pool.end().then(() => app.close())
     })
 
 
     it('responds with json', async () => {
-        await request(app)
+       /* await request(app)
             .post('/tasks')
             .send({title: 'testTitle', message: 'testMessage'})
             .set('Accept', 'application/json')
@@ -55,6 +59,6 @@ describe('Create Get and Delete Task', () => {
             .expect('Content-Type', /json/)
             .expect(200);
 
-        expect(deletedTasks.body.length).toBe(0)
+        expect(deletedTasks.body.length).toBe(0) */
     });
 });
