@@ -1,2 +1,19 @@
 FROM node:18.8.0-alpine3.16
-RUN wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.2.0/flyway-commandline-9.2.0-linux-x64.tar.gz | tar xvz && ln -s `pwd`/flyway-9.2.0/flyway /usr/local/bin
+RUN apk --no-cache add --update bash openssl
+
+RUN addgroup flyway && adduser -S -h /flyway -D -G flyway flyway
+WORKDIR /flyway
+
+USER flyway
+
+ENV FLYWAY_VERSION 8.5.9
+
+RUN wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.tar.gz \
+  && gzip -d flyway-commandline-${FLYWAY_VERSION}.tar.gz \
+  && tar -xf flyway-commandline-${FLYWAY_VERSION}.tar --strip-components=1 \
+  && rm flyway-commandline-${FLYWAY_VERSION}.tar
+
+ENV PATH="/flyway:${PATH}"
+
+ENTRYPOINT ["flyway"]
+CMD ["-?"]
